@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="cats [file:/Users/daniel/dev/rockthejvm/courses/cats/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+<module external.linked.project.id="cats-course [file:/scm/github/heritamas/cats-course/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+  <component name="DisplayModuleName">
+    <option name="name" value="cats" />
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_21">
     <output url="file://$MODULE_DIR$/../../target/scala-2.13/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.13/test-classes" />
     <exclude-output />
@@ -11,9 +14,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.3:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-core_2.13:2.1.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_2.13:2.1.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-macros_2.13:2.1.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: scala-sdk-2.13.14" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.14:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-core_2.13:2.7.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_2.13:2.7.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:simulacrum-scalafix-annotations_2.13:0.5.4:jar" level="project" />
   </component>
 </module>

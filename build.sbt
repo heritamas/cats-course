@@ -2,7 +2,7 @@ name := "cats"
 
 version := "0.1"
 
-scalaVersion := "2.13.7"
+scalaVersion := "2.13.14"
 
 val catsVersion = "2.7.0"
 

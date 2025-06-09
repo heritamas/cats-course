@@ -25,6 +25,12 @@ object TypeClasses {
          |""".stripMargin.trim
   }
 
+  implicit def listSerializer[T](implicit serializer: JSONSerializer[T]): JSONSerializer[List[T]] =
+    new JSONSerializer[List[T]] {
+      override def toJson(value: List[T]): String =
+        value.map(v => serializer.toJson(v)).mkString("[", ",", "]")
+    }
+
   // part 3 - offer some API
   def convertListToJSON[T](list: List[T])(implicit serializer: JSONSerializer[T]): String =
     list.map(v => serializer.toJson(v)).mkString("[", ",", "]")
@@ -37,9 +43,10 @@ object TypeClasses {
   }
 
   def main(args: Array[String]): Unit = {
-    println(convertListToJSON(List(Person("Alice", 23), Person("Xavier", 45))))
+    //println(convertListToJSON(List(Person("Alice", 23), Person("Xavier", 45))))
     val bob = Person("Bob", 35)
     import JSONSyntax._
     println(bob.toJson)
+    println(List(Person("Alice", 23), Person("Xavier", 45)).toJson)
   }
 }

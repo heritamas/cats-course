@@ -8,7 +8,7 @@ object TCVariance {
   import cats.syntax.eq._
 
   val aComparison = Option(2) === Option(3)
-  // val anInvalidComparison = Some(2) === None // Eq[Some[Int]] not found
+  //val anInvalidComparison = Some(2) === None // Eq[Some[Int]] not found
 
   // variance
   class Animal

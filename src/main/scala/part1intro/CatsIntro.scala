@@ -14,13 +14,13 @@ object CatsIntro {
   // part 3 - use the TC API
   val intEquality = Eq[Int]
   val aTypeSafeComparison = intEquality.eqv(2, 3) // false
-  //  val anUnsafeComparison = intEquality.eqv(2, "a string") -- doesn't compile!
+  // val anUnsafeComparison = intEquality.eqv(2, "a string") //-- doesn't compile!
 
   // part 4 - use extension methods (if applicable)
   import cats.syntax.eq._
   val anotherTypeSafeComp = 2 === 3 // false
   val neqComparison = 2 =!= 3 // true
-  // val invalidComparison = 2 === "a String" -- doesn't compile
+  // val invalidComparison = 2 === "a String" //-- doesn't compile
   // extension methods are only visible in the presence of the right TC instance
 
   // part 5 - extending the TC operations to composite types, e.g. lists
