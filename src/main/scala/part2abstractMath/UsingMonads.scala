@@ -80,6 +80,38 @@ object UsingMonads {
       else Some(s"Request ($payload) has been accepted")
   }
 
+  object TryHttpService extends HttpService[scala.util.Try] {
+    import scala.util.{Failure, Success, Try}
+
+    override def getConnection(cfg: Map[String, String]): Try[Connection] =
+      if (cfg.contains("host") && cfg.contains("port")) {
+        Success(Connection(cfg("host"), cfg("port")))
+      } else {
+        Failure(new RuntimeException("Connection could not be established: invalid configuration"))
+      }
+
+    override def issueRequest(connection: Connection, payload: String): Try[String] =
+      if (payload.length >= 20) Failure(new RuntimeException("Payload is too large"))
+      else Success(s"Request ($payload) has been accepted")
+  }
+
+  object FutureHttpService extends HttpService[scala.concurrent.Future] {
+    import scala.concurrent.{ExecutionContext, Future}
+
+    implicit val ec: ExecutionContext = ExecutionContext.global
+
+    override def getConnection(cfg: Map[String, String]): Future[Connection] =
+      if (cfg.contains("host") && cfg.contains("port")) {
+        Future.successful(Connection(cfg("host"), cfg("port")))
+      } else {
+        Future.failed(new RuntimeException("Connection could not be established: invalid configuration"))
+      }
+
+    override def issueRequest(connection: Connection, payload: String): Future[String] =
+      if (payload.length >= 20) Future.failed(new RuntimeException("Payload is too large"))
+      else Future.successful(s"Request ($payload) has been accepted")
+  }
+
   val responseOption = OptionHttpService.getConnection(config).flatMap {
     conn => OptionHttpService.issueRequest(conn, "Hello, HTTP service")
   }
