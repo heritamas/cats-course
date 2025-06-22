@@ -78,6 +78,17 @@ object Monads {
   def getPairs[M[_], A, B](ma: M[A], mb: M[B])(implicit monad: Monad[M]): M[(A, B)] =
     monad.flatMap(ma)(a => monad.map(mb)(b => (a, b)))
 
+  def getPairsComp[M[_], A, B](ma: M[A], mb: M[B])(implicit monad: Monad[M]): M[(A, B)] = {
+    import cats.syntax.flatMap._ // provides flatMap extension method
+    import cats.syntax.functor._ // provides map extension method
+
+    for {
+      a <- ma
+      b <- mb
+    } yield (a, b)
+  }
+
+
   // extension methods - weirder imports - pure, flatMap
   import cats.syntax.applicative._ // pure is here
   val oneOption = 1.pure[Option] // implicit Monad[Option] will be used => Some(1)
