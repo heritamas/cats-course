@@ -105,8 +105,8 @@ object DataValidation {
 
   def main(args: Array[String]): Unit = {
     val form = Map(
-      "Name" -> "",
-      "Email" -> "danielrockthejvm.com",
+      "Name" -> "Big D",
+      "Email" -> "daniel@rockthejvm.com",
       "Password" -> "Rockthejvm1!"
     )
 

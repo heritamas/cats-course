@@ -27,6 +27,8 @@ object FunctionalState {
     secondResult <- secondTransformation
   } yield (firstResult, secondResult)
 
+  //val res = compositeTransformation2.run(10).value
+
   // function composition is clunky
   val func1 = (s: Int) => (s + 1, s"Added 1 to 10, obtained ${s + 1}")
   val func2 = (s: Int) => (s * 5, s"Multiplied with 5, obtained ${s * 5}")
@@ -71,5 +73,6 @@ object FunctionalState {
     println(compositeTransformation2.run(10).value)
     println(compositeFunc(10))
     println(danielsCart.run(ShoppingCart(List(), 0)).value)
+    println(program.run(10).value)
   }
 }
